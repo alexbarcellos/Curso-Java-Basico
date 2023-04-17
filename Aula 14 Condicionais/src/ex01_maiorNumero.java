@@ -19,4 +19,3 @@ public class ex01_maiorNumero {
         scan.close();
     }
 }
-// adicionado um comentario para ver se aparece no git hub
