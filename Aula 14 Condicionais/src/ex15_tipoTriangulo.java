@@ -10,7 +10,7 @@ class ex15_tipoTriangulo {
         double lado3 = scan.nextDouble();
 
         if ( ( (lado1 + lado2) > lado3) && ( (lado1 + lado3) > lado2 ) && ( (lado2 + lado3) > lado1 ) ) {
-            
+            // é um triangulo, o bloco abaixo verifica o tipo 
             if ( (lado1 == lado2) || (lado2 == lado3) ) {
                 System.out.println("Triangulo Equilátero");
             } else if ( (lado1 == lado2) || (lado1 == lado3) || (lado2 == lado3) ) {
