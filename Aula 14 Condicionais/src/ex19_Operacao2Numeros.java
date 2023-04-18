@@ -5,7 +5,7 @@ public class ex19_Operacao2Numeros {
         Scanner scan = new Scanner(System.in);
         double resultado = 0;
         String lado, sinal;
-        int mensagem = 1;
+        boolean valida = true;
 
         System.out.print("\nEntre com   um  número inteiro: ");
         double numero1 = scan.nextInt();
@@ -28,7 +28,7 @@ public class ex19_Operacao2Numeros {
                 resultado = numero1 / numero2;
                     break;
             default:
-                mensagem = 0;
+            valida = false;
         }
         
         if (resultado < 0) {
@@ -41,11 +41,11 @@ public class ex19_Operacao2Numeros {
         } else {
             lado = "impar";
         }
-        if ( mensagem == 0 ) {
-            System.out.println("Operação inválida");
-        } else {
+        if ( valida ) {
             System.out.println(numero1 + " " + operacao + " " + numero2 + " = " + resultado);
             System.out.println("número " + lado + " e " + sinal);
+        } else {
+            System.out.println("Operação inválida");
         }
         scan.close();
     }

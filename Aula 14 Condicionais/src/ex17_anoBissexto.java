@@ -5,7 +5,7 @@ public class ex17_anoBissexto {
         Scanner scan = new Scanner(System.in);
         System.out.print("\nAno ");
         int ano = scan.nextInt();
-        if (ano % 4 == 0) {
+        if ( (ano % 4 == 0 && ano % 100 != 0 ) || ano % 400 == 0 ) {
             System.out.println(ano + " É UM ANO BISSESTO\n");
         } else {
             System.out.println(ano + " não é um ano bissesto\n");
