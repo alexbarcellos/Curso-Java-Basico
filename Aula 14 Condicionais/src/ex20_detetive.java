@@ -11,27 +11,27 @@ public class ex20_detetive {
         System.out.print("Ligou para a vítima: ");
         resposta = scan.nextLine();
         if (resposta.equalsIgnoreCase("s") ) {
-            pista = pista + 1;
+            pista ++;
         }
         System.out.print("Esteve no local do crime: ");
         resposta = scan.nextLine();
         if (resposta.equalsIgnoreCase("s") ) {
-            pista = pista + 1;
+            pista ++;
         }
         System.out.print("Mora perto da vítima: ");
         resposta = scan.nextLine();
         if (resposta.equalsIgnoreCase("s") ) {
-            pista = pista + 1;
+            pista ++;
         }
         System.out.print("Devia para a vítima: ");
         resposta = scan.nextLine();
         if (resposta.equalsIgnoreCase("s") ) {
-            pista = pista + 1;
+            pista ++;
         }
         System.out.print("Já trabalhou para a vítima: ");
         resposta = scan.nextLine();
         if (resposta.equalsIgnoreCase("s") ) {
-            pista = pista + 1;
+            pista ++;
         }
         System.out.print("Respostas positivas: " + pista);
         switch (pista) {
