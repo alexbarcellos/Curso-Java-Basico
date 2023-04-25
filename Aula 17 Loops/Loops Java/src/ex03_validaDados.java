@@ -12,7 +12,8 @@ public class ex03_validaDados {
         boolean flag = true;
 
         while (flag) {
-
+            System.out.print("\nNome: ");
+            nome = scan.next();
 
             if ( nome.length() < 3) {  
                 System.out.println("\nNome muito curto... ");
