@@ -3,39 +3,39 @@ import java.util.Scanner;
 public class ex03_validaDados {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        int flag = 1;       // respostas inválidas
-        String nome;        // > 3 caracteres
-        String sexo;        // m f
-        String estadoCivil; // c s v d
-        double salario;     // > 0
-        int idade;          // 0 a 15
-        while (flag > 0) {
-            flag = 0;
-            System.out.print("\nNome: ");
-            nome = scan.next();
-            System.out.print("Sexo: ");
-            sexo = scan.next();
-            System.out.print("Estado Civil: ");
-            estadoCivil = scan.next();
-            System.out.print("Idade: ");
-            idade = scan.nextInt();
-            System.out.print("Salario: ");
-            salario = scan.nextDouble();
+    
+        String nome = null;        // > 3 caracteres
+        String sexo = null;        // m f
+        String estadoCivil = null; // c s v d
+        double salario = 0;         // > 0
+        int idade = 0;              // 0 a 15
+        boolean flag = true;
+
+        while (flag) {
+
 
             if ( nome.length() < 3) {  
-                flag++;
                 System.out.println("\nNome muito curto... ");
             } else {
-                System.out.println("\nNome ok!");
+               
+                flag = false;
             }
-
+        }
+        flag = true;
+        while (flag) {
+            System.out.print("Gênero: ");
+            sexo = scan.next();
             if ( sexo.equalsIgnoreCase("f") || sexo.equalsIgnoreCase("m") ) {  
-                System.out.println("Sexo ok!");
+                
+                flag = false;
             } else {
-                System.out.println("Sexo inválido (utilize 'F/M')... ");
-                flag++;
+                System.out.println("Gênero inválido (utilize 'F/M')... ");
             }
-
+        }
+        flag = true;
+        while (flag) {
+            System.out.print("Estado Civil: ");
+            estadoCivil = scan.next();
             switch (estadoCivil) {
                 case "s": 
                 case "S":
@@ -45,28 +45,43 @@ public class ex03_validaDados {
                 case "V":
                 case "d": 
                 case "D": 
-                        System.out.println("Estado Civil Ok!"); 
+                        
+                        flag = false;
                             break;
                 default: 
                         System.out.println("Estado Civil inválido. Utilize: ( S / C / V / D ) ...");
-                        flag++;
             }
-
+        }
+        flag = true;
+        while (flag) {
+            System.out.print("Idade: ");
+            idade = scan.nextInt();
             if (idade >=0 && idade <= 15) {
-                System.out.println("Idade Ok!");
+                
+                flag = false;
             } else {
                 System.out.println("Idade deve estar entre 0 e 15 anos");
-                flag++;
             }
+        }
+        flag = true;
+        while (flag) {
+            System.out.print("Salario: ");
+            salario = scan.nextDouble();
 
             if (salario <= 0) {
                 System.out.println("Salário deve ser maior que 0 ...");
-                flag++;
             } else {
-                System.out.println("Salário ok !");
+                
+                flag = false;
             }
         }
-        System.out.println("Cadastro de Usuários efetuado com sucesso! ");
+
+        System.out.println("\n\nCadastro de Usuários efetuado com sucesso! ");
+        System.out.println("\nNome: " + nome);
+        System.out.println("Gênero: " + sexo);
+        System.out.println("Estado Civil: " + estadoCivil); 
+        System.out.println("Idade: " + idade);
+        System.out.println("Salário: " + salario);
         scan.close();
     }
 }
