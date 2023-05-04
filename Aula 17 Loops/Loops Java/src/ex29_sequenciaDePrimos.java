@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ex29_sequenciaDePrimos {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Qual o ultimo número da sequencia: "); // 3
+        System.out.print("Qual o ultimo número da sequencia: ");
         int ultimo = scan.nextInt();
         boolean primo;
         System.out.print("Primos: ");

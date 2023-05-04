@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ex28_primos {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Digito um número: ");
+        System.out.print("Digite um número: ");
         int numero = scan.nextInt();
         boolean primo = true;
         for ( int i = 2 ; i < numero ; i++) {
