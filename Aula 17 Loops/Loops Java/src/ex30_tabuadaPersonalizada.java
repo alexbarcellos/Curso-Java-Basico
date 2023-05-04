@@ -3,12 +3,11 @@ import java.util.Scanner;
 public class ex30_tabuadaPersonalizada {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
-
-        System.out.print("\nTabuada do: ");
-        int n = scan.nextInt();
         int primeiro = 1;
         int ultimo = 0;
+        
+        System.out.print("\nTabuada do: ");
+        int n = scan.nextInt();
 
         while (primeiro > ultimo) {
             System.out.print("multiplo inicial: ");
@@ -24,5 +23,4 @@ public class ex30_tabuadaPersonalizada {
         }
         scan.close();
     }
-
 }
