@@ -1,4 +1,4 @@
-public class ex4_crescimentoPopulacional {
+public class ex04_crescimentoPopulacional {
     public static void main (String[] args) {
         double popA = 80_000;
         double popB = 200_000;
