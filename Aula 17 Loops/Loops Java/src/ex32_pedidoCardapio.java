@@ -4,14 +4,15 @@ import java.util.Scanner;
 public class ex32_pedidoCardapio {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        DecimalFormat format = new DecimalFormat("R$ ###,###.00");
+        DecimalFormat format = new DecimalFormat("R$ ###,##0.00");
         int codigo = 99;
         String produto = "";
         int qtd = 0;
+        int itens = 0;
         double preco = 0;
         double total = 0;
         boolean valido = true;
-        String output = "\nRESTAURANTE DO ZEZAO - CARDAPIO DO DIA\n\nESPECIFICAÇÃO\t\tQTD\tPREÇO";
+        String output = "\nRESTAURANTE DO ZEZAO - CARDAPIO DO DIA\n\nESPECIFICAÇÃO\t\tQTD\tPREÇO\t\tTOTAL";
 
         while (valido) {
             System.out.print("Codigo do Produto: ");
@@ -21,6 +22,7 @@ public class ex32_pedidoCardapio {
                 produto = "";
                 valido = false;
                 preco = 0;
+                qtd = 0;
             } else {
                 System.out.print("Quantidade: ");
                 qtd = scan.nextInt();
@@ -57,13 +59,14 @@ public class ex32_pedidoCardapio {
                 }
             }   
 
-            total += preco;
+            total += (preco*qtd);
+            itens +=qtd;
             if (preco > 0) {  // Registra o produto em mais uma linha de output
-                output += "\n> " + produto + "\t" + qtd + "\t" + format.format(preco);
+                output += "\n> " + produto + "\t" + qtd + "\t" + format.format(preco) + "\t\t" + format.format(preco*qtd);
             }
         } 
-        output += "\n> TOTAL DO PEDIDO \t..."; // produz a linha final do pedido
-        System.out.println("\n" + output + "\t" + format.format(total) + "\n");
+        output += "\n> TOTAL DO PEDIDO    [  " + itens; // produz a linha final do pedido
+        System.out.println("\n" + output + "\tITENS   ]\t" + format.format(total) + "\n");
         scan.close();
     }
 }
