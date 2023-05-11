@@ -4,8 +4,8 @@ public class ex18_menorMaioIdade {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int [] vetorIdades = new int[10];
-        int max = Integer.MAX_VALUE;
-        int min = Integer.MIN_VALUE;
+        int max = vetorIdades[0];  
+        int min = vetorIdades[0]; 
         String msg = "\nGrupo das idades:  ";
 
         System.out.println("\nEntre com as idades do grupo: ");
@@ -13,18 +13,17 @@ public class ex18_menorMaioIdade {
             System.out.print("Pessoa " + (i+1) + ":  ");
             vetorIdades[i] = scan.nextInt();
             msg+= vetorIdades[i] + "  ";
-            //        10         -1
-            if (vetorIdades[i] < max) {
+               
+            if (vetorIdades[i] >= max) {
                 max = vetorIdades[i];
-            }
-            if (vetorIdades[i] > min) {
+            } else {
                 min = vetorIdades[i];
-            }
+            } 
         } 
 
         System.out.print(msg + "\n");
-        System.out.println("A menor idade do grupo é " + max);
-        System.out.println("A maior idade do grupo é " + min);
+        System.out.println("A menor idade do grupo é " + min);
+        System.out.println("A maior idade do grupo é " + max);
         scan.close();
     }
 }
