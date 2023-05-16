@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class ex19_mediaEscolar {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        double[] result = new double[2];
+        double[] result = new double[10];
         double[] notas1 = new double[result.length];
         double[] notas2 = new double[result.length];
         String sit = "";
