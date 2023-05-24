@@ -29,5 +29,6 @@ public class ex03_qtdParesImpares {
 
         System.out.println(qtdPares + " pares.");
         System.out.println(qtdImpares + " impares.");
+        scan.close();
     }
 }
