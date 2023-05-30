@@ -1,5 +1,5 @@
 public class Livro {
-    String título;
+    String titulo;
     String autor;
     int paginas;
 }
