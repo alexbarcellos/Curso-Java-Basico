@@ -27,9 +27,9 @@ public class Ex06_Contato {
         contato2.fixo[0] = "(24) 7766-5512";
 
         System.out.println("\nLista de Contatos:");
-        System.out.println(contato1.nome + ": Fixo " + contato1.fixo[0]);
+        System.out.println(contato1.nome + ": Fixo " + contato1.fixo[0] + " - Grupo " + contato1.grupo);
         System.out.println(contato1.nome + ": Fixo " + contato1.fixo[1]);
-        System.out.println(contato2.nome + ": Celular " + contato2.celular[0]);
+        System.out.println(contato2.nome + ": Celular " + contato2.celular[0] + " - Grupo " + contato2.grupo);
         System.out.println(contato2.nome + ": Celular " + contato2.celular[1]);
     }
 }
