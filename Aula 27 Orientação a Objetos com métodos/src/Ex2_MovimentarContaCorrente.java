@@ -1,8 +1,5 @@
-import java.util.Scanner;
-
 public class Ex2_MovimentarContaCorrente {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
         ContaCorrente conta = new ContaCorrente();
         conta.limite = 1000;
         conta.ativa = true;
@@ -15,4 +12,5 @@ public class Ex2_MovimentarContaCorrente {
         conta.sacar(200.50);
         conta.exibirSaldo();
     }
-}
+    
+} 
