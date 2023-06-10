@@ -32,7 +32,7 @@ public class JogoDaVelha {
         }
     }
 
-    public void mostrarSeOcupada() {
+    private void mostrarSeOcupada() {
         System.out.println(" Posição já foi ocupada");
         partida--;
     }
@@ -70,7 +70,7 @@ public class JogoDaVelha {
         return false;
     }
 
-    public void mostrarGanhador(String sequencia) {
+    private void mostrarGanhador(String sequencia) {
         exibirTabuleiro();
         System.out.println("O Jogador " + player + " ganhou a partida na " + sequencia + "\n");
         partida = 10; // força saída do loop
@@ -152,7 +152,7 @@ public class JogoDaVelha {
         }
     }
 
-    public void atualizarJogada() {
+    private void atualizarJogada() {
         jogada = "";
         jogada += "\n  " + tabuleiro[x][y] + " | " + tabuleiro[x][y + 1] + " | " + tabuleiro[x][y + 2];
         jogada += "\n ---|---|--- \n";

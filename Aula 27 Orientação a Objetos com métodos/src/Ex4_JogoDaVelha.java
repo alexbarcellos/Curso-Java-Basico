@@ -11,8 +11,9 @@ public class Ex4_JogoDaVelha {
             jogo.escolherJogadorDaPartida();
             jogo.escolherPosicao();
             jogo.exibirTabuleiro();
+            
         }
-
+        
         scan.close();
     }
 }
