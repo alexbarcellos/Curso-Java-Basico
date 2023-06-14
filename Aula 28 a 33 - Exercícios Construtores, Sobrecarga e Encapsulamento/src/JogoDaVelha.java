@@ -29,15 +29,15 @@ public class JogoDaVelha {
     public void escolherJogadorDaPartida() {
         setPartida(this.partida+1);
         if (getPartida() % 2 == 1) {
-            player = 'X';
+            this.player = 'X';
         } else {
-            player = 'O';
+            this.player = 'O';
         }
     }
 
     private void mostrarSeOcupada() {
-        System.out.println(" Posição já foi ocupada");
-        partida--;
+        System.out.println("Posição já ocupada");
+        setPartida(this.partida-1);
     }
 
     public boolean ganhou() {
