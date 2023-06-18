@@ -2,10 +2,7 @@ import java.util.Scanner;
 
 public class JogoDaVelha {
     Scanner scan = new Scanner(System.in);
-    private int x = 0, y = 0;
     private int partida = 0;
-    private int posicao;
-    private String jogada = "";
     private char player = ' ';
     private char[][] tabuleiro = {
             { '1', '2', '3' },
@@ -16,53 +13,49 @@ public class JogoDaVelha {
     // ********************************** Métodos ***********************************
 
     public void exibirTabuleiro() {
-        System.out.println(partida > 0 ? "Esta foi a " + partida + "ª jogada \n" : ""); // op. ternario: evitar "0ª jogada " 
-        for (int x = 0; x < this.tabuleiro.length; x++) {
-            for (int y = 0; y < this.tabuleiro[x].length; y++) {
-                System.out.print(" " + this.tabuleiro[x][y] + ((y<2) ? " |" : "")); // op. ternario: evita caracter ' | ' na ultima coluna
+        System.out.println(getPartida() > 0 ? "Esta foi a " + getPartida() + "ª jogada \n" : ""); // op. ternario:
+                                                                                                  // evitar "0ª jogada "
+        for (int x = 0; x < getTabuleiro().length; x++) {
+            for (int y = 0; y < getTabuleiro()[x].length; y++) {
+                System.out.print(" " + getTabuleiro()[x][y] + ((y < 2) ? " |" : "")); // op. ternario: evita caracter "|" na ultima coluna
             }
-            System.out.print( x < 2 ? "\n---|---|---\n" : "\n" ); // op. ternario: evita caracteres ' ---| ' na ultima linha
+            System.out.print(x < 2 ? "\n---|---|---\n" : "\n"); // op. ternario: evita caracteres " ---| " na ultima linha                                        
         }
         System.out.println();
     }
 
-    public void escolherJogadorDaPartida() {
-        setPartida(this.partida+1);
-        if (getPartida() % 2 == 1) {
-            this.player = 'X';
+    public void jogadorDaVez() {
+        this.partida++;
+        if (getPartida() % 2 == 1) { // partida par: jogador "X"; impar: jogador "O"
+            setPlayer('X');
         } else {
-            this.player = 'O';
+            setPlayer('O');
         }
     }
 
-    private void mostrarSeOcupada() {
-        System.out.println("Posição já ocupada");
-        setPartida(this.partida-1);
-    }
-
-    public boolean ganhou() {
-        if (tabuleiro[0][0] == player && tabuleiro[0][1] == player && tabuleiro[0][2] == player) { // LIN 1
+        public boolean ganhou(char  jogador) {
+        if (getTabuleiro()[0][0] == jogador && getTabuleiro()[0][1] == jogador && getTabuleiro()[0][2] == jogador) { // LIN 1
             mostrarGanhador("Linha 1");
             return true;
-        } else if (tabuleiro[1][0] == player && tabuleiro[1][1] == player && tabuleiro[1][2] == player) { // LIN 2
+        } else if (getTabuleiro()[1][0] == jogador && getTabuleiro()[1][1] == jogador && getTabuleiro()[1][2] == jogador) { // LIN 2
             mostrarGanhador("Linha 2");
             return true;
-        } else if (tabuleiro[2][0] == player && tabuleiro[2][1] == player && tabuleiro[2][2] == player) { // LIN 3
+        } else if (getTabuleiro()[2][0] == jogador && getTabuleiro()[2][1] == jogador && getTabuleiro()[2][2] == jogador) { // LIN 3
             mostrarGanhador("Linha 3");
             return true;
-        } else if (tabuleiro[0][0] == player && tabuleiro[1][0] == player && tabuleiro[2][0] == player) { // COL 1
+        } else if (getTabuleiro()[0][0] == jogador && getTabuleiro()[1][0] == jogador && getTabuleiro()[2][0] == jogador) { // COL 1
             mostrarGanhador("Coluna 1");
             return true;
-        } else if (tabuleiro[0][1] == player && tabuleiro[1][1] == player && tabuleiro[2][1] == player) { // COL 2
+        } else if (getTabuleiro()[0][1] == jogador && getTabuleiro()[1][1] == jogador && getTabuleiro()[2][1] == jogador) { // COL 2
             mostrarGanhador("Coluna 2");
             return true;
-        } else if (tabuleiro[0][2] == player && tabuleiro[1][2] == player && tabuleiro[2][2] == player) { // COL 3
+        } else if (getTabuleiro()[0][2] == jogador && getTabuleiro()[1][2] == jogador && getTabuleiro()[2][2] == jogador) { // COL 3
             mostrarGanhador("Coluna 3");
             return true;
-        } else if (tabuleiro[0][0] == player && tabuleiro[1][1] == player && tabuleiro[2][2] == player) { // DIAG \
+        } else if (getTabuleiro()[0][0] == jogador && getTabuleiro()[1][1] == jogador && getTabuleiro()[2][2] == jogador) { // DIAG \
             mostrarGanhador("Diagonal \\");
             return true;
-        } else if (tabuleiro[2][0] == player && tabuleiro[1][1] == player && tabuleiro[0][2] == player) { // DIAG /
+        } else if (getTabuleiro()[2][0] == jogador && getTabuleiro()[1][1] == jogador && getTabuleiro()[0][2] == jogador) { // DIAG /
             mostrarGanhador("Diagonal /");
             return true;
         } else if (partida == 9) { // EMPATE
@@ -76,103 +69,36 @@ public class JogoDaVelha {
     private void mostrarGanhador(String sequencia) {
         exibirTabuleiro();
         System.out.println("O Jogador " + player + " ganhou a partida na " + sequencia + "\n");
-        partida = 10; // força saída do loop
+        setPartida(10); // força saída do loop
     }
 
-    public void escolherPosicao() {
-        System.out.print(" Jogador " + player + " - Posição: ");
-        posicao = scan.nextInt();
+    public void escolherPosicao(char posicao) {
 
-        switch (posicao) {
-            case 1:
-                if (tabuleiro[x][y] == '1') {
-                    tabuleiro[x][y] = player;
-                } else {
-                    mostrarSeOcupada();
-                }
-                break;
+        for (int i = 0; i < getTabuleiro().length; i++) {
+            for (int j = 0; j < getTabuleiro()[i].length; j++) {
 
-            case 2:
-                if (tabuleiro[x][y + 1] == '2') {
-                    tabuleiro[x][y + 1] = player;
-                } else {
-                    mostrarSeOcupada();
+System.out.println("Posição ecolhida: " + posicao + " - Pos. no Tabuleiro: " +this.tabuleiro[i][j]);
+
+                if ( (this.tabuleiro[i][j] == 'O') || (this.tabuleiro[i][j] == 'X') ) {
+                    System.out.println("Já ocupada a Posição: " + (posicao));
+                    this.partida--;
+                    return;
                 }
-                break;
-            case 3:
-                if (tabuleiro[x][y + 2] == '3') {
-                    tabuleiro[x][y + 2] = player;
-                } else {
-                    mostrarSeOcupada();
+                if (this.tabuleiro[i][j] == posicao) {
+                    this.tabuleiro[i][j] = getPlayer(); 
+                    return;
                 }
-                break;
-            case 4:
-                if (tabuleiro[x + 1][y] == '4') {
-                    tabuleiro[x + 1][y] = player;
-                } else {
-                    mostrarSeOcupada();
-                }
-                break;
-            case 5:
-                if (tabuleiro[x + 1][y + 1] == '5') {
-                    tabuleiro[x + 1][y + 1] = player;
-                } else {
-                    mostrarSeOcupada();
-                }
-                break;
-            case 6:
-                if (tabuleiro[x + 1][y + 2] == '6') {
-                    tabuleiro[x + 1][y + 2] = player;
-                } else {
-                    mostrarSeOcupada();
-                }
-                break;
-            case 7:
-                if (tabuleiro[x + 2][y] == '7') {
-                    tabuleiro[x + 2][y] = player;
-                } else {
-                    mostrarSeOcupada();
-                }
-                break;
-            case 8:
-                if (tabuleiro[x + 2][y + 1] == '8') {
-                    tabuleiro[x + 2][y + 1] = player;
-                } else {
-                    mostrarSeOcupada();
-                }
-                break;
-            case 9:
-                if (tabuleiro[x + 2][y + 2] == '9') {
-                    tabuleiro[x + 2][y + 2] = player;
-                } else {
-                    mostrarSeOcupada();
-                }
-                break;
-            default:
-                System.out.println("inválido, entre novamente ");
-                partida--;
-                break;
-        }
+            }
+        }   
     }
+
+    public boolean mostrarSeOcupada(char posOcupada) {
+        
+        return true;
+    }
+
      
-    
     // ********************************* Getters & Setters *********************************
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 
     public int getPartida() {
         return partida;
@@ -180,22 +106,6 @@ public class JogoDaVelha {
 
     public void setPartida(int partida) {
         this.partida = partida;
-    }
-
-    public int getPosicao() {
-        return posicao;
-    }
-
-    public void setPosicao(int posicao) {
-        this.posicao = posicao;
-    }
-
-    public String getJogada() {
-        return jogada;
-    }
-
-    public void setJogada(String jogada) {
-        this.jogada = jogada;
     }
 
     public char getPlayer() {
