@@ -11,9 +11,14 @@ public class Aluno {
     private double[] mediasMateria;
     private double[][] notasMateria;
 
-    // ***************** Construtores *******************
+    // ***************** Construtores ******************* 
 
-    public Aluno() { // inicializa os arrays
+    public Aluno() {
+    }
+    
+    //   public Aluno(int qtdMaterias) { // não funciona como construtor, só como método void
+    public void Aluno(int qtdMaterias) { // inicializa os arrays
+        setQtdMaterias(qtdMaterias);
         materias = new String[getQtdMaterias()];
         mediasMateria = new double[4]; 
         notasMateria = new double[getQtdMaterias()][4];
@@ -79,7 +84,7 @@ public class Aluno {
 
     // ********************** Metodos ************************
 
-    public void CadastrarAluno() {
+    public void cadastrarAluno() {
 
         System.out.println("\nCadastro De Notas Escolares");
         System.out.print("\nMatricula: ");
@@ -90,43 +95,37 @@ public class Aluno {
         setCurso(scan.next());
     }
 
-    public boolean CadastrarMaterias(int qtMaterias) { // recebe o nº de matérias
-        if (qtMaterias < 1) {
+    public boolean cadastrarMaterias(int qtMaterias) { // recebe o nº de matérias
+        Aluno(qtMaterias); // instanciando o construtor para validar os arrays
+
+        if (getQtdMaterias() < 1) {
             return false;
         } else {
-            System.out.printf("\nCadastre as %s matérias: \n", qtMaterias + "");
-            setMaterias(new String[qtMaterias]); // setando array para o nº de matérias
-
+            System.out.printf("\nCadastre as %s matérias: \n", getQtdMaterias() + "");
+            
             for (int i = 0; i < getMaterias().length; i++) {
                 System.out.printf("Matéria %s: ", (i + 1));
                 getMaterias()[i] = scan.next();
             }
 
-            CadastrarNotas();
+            cadastrarNotas();
             return true;
         }
-
     }
 
-    private void CadastrarNotas() {
-        mediasMateria = new double[getMaterias().length];
-        notasMateria = new double[getMaterias().length][4]; // fixa notas em 4. Matérias variam
-
+    private void cadastrarNotas() {
+        
         for (int i = 0; i < getNotasMateria().length; i++) {
 
             for (int j = 0; j < getNotasMateria()[i].length; j++) {
                 System.out.print("Nota " + (j + 1) + " de " + getMaterias()[i] + ": ");
-                SetNotaPosIJ(scan.nextDouble(), i, j); // input da 'nota' na posição [i][j] do array 'notasMateria'
-                this.mediasMateria[i] += notasMateria[i][j];
+                this.notasMateria[i][j] = scan.nextDouble();
+                this.mediasMateria[i] += this.notasMateria[i][j];
             }
         }
     }
 
-    private void SetNotaPosIJ(double nota, int i, int j) { // recebe as notas no array de notas das matérias
-        this.notasMateria[i][j] = nota;
-    }
-
-    public void ExibirFicha() {
+    public void exibirFicha() {
         System.out.println("\n\nMatrícula: " + getMatricula());
         System.out.println("Nome:      " + getNome());
         System.out.println("Curso:     " + getCurso());
@@ -142,7 +141,7 @@ public class Aluno {
         System.out.println();
     }
 
-    public void Resultado() {
+    public void resultado() {
         String result;
         for (int i = 0 ; i < getMaterias().length ; i ++) {
             if (getMediasMateria()[i] / 4 >= 7) {

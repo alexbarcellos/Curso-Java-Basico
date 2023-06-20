@@ -5,12 +5,12 @@ public class Ex3_Aluno {
         Scanner scan = new Scanner(System.in);
         Aluno aluno1 = new Aluno();
 
-        aluno1.CadastrarAluno();
+        aluno1.cadastrarAluno();
         System.out.print("Quantas matérias cursa: ");
-        if (aluno1.CadastrarMaterias(scan.nextInt())) {
-            aluno1.ExibirFicha();
+        if (aluno1.cadastrarMaterias(scan.nextInt())) {
+            aluno1.exibirFicha();
             System.out.println("RESULTADO FINAL");
-            aluno1.Resultado();
+            aluno1.resultado();
         } else {
             System.out.println("\nNão há matérias para exibir notas!!! \n");
         }
