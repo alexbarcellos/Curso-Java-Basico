@@ -1,4 +1,4 @@
-public class Calculadora {
+public class Calculadora_Aula {
 
     public static int soma(int a, int b) {
         return ( a + b );
