@@ -10,7 +10,34 @@ public class JogoDaVelha {
             { '7', '8', '9' }
     };
 
-    // ********************************** Métodos ***********************************
+    // ********************************* Getters & Setters *********************************
+
+    public int getPartida() {
+        return partida;
+    }
+
+    public void setPartida(int partida) {
+        this.partida = partida;
+    }
+
+    public char getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(char player) {
+        this.player = player;
+    }
+
+    public char[][] getTabuleiro() {
+        return tabuleiro;
+    }
+
+    public void setTabuleiro(char[][] tabuleiro) {
+        this.tabuleiro = tabuleiro;
+    }
+
+
+// ********************************** Métodos ***********************************
 
     public void exibirTabuleiro() {
         System.out.println(getPartida() > 0 ? "Esta foi a " + getPartida() + "ª jogada \n" : ""); // op. ternario:
@@ -77,51 +104,29 @@ public class JogoDaVelha {
         for (int i = 0; i < getTabuleiro().length; i++) {
             for (int j = 0; j < getTabuleiro()[i].length; j++) {
 
-System.out.println("Posição ecolhida: " + posicao + " - Pos. no Tabuleiro: " +this.tabuleiro[i][j]);
-
-                if ( (this.tabuleiro[i][j] == 'O') || (this.tabuleiro[i][j] == 'X') ) {
+                if ( isNoTabuleiro('O', i, j) || (isNoTabuleiro('X', i, j))) {
                     System.out.println("Já ocupada a Posição: " + (posicao));
                     this.partida--;
                     return;
                 }
-                if (this.tabuleiro[i][j] == posicao) {
-                    this.tabuleiro[i][j] = getPlayer(); 
+                
+                if (isNoTabuleiro(posicao, i, j)) {
+                    setNoTabuleiro(getPlayer(), i, j);
                     return;
                 }
             }
         }   
     }
-
-    public boolean mostrarSeOcupada(char posOcupada) {
-        
-        return true;
+    private void setNoTabuleiro(char player2, int i, int j) {
+        this.tabuleiro[i][j] = getPlayer(); //atribui o jogador atual na posicao em validação
     }
 
-     
-    // ********************************* Getters & Setters *********************************
-
-    public int getPartida() {
-        return partida;
-    }
-
-    public void setPartida(int partida) {
-        this.partida = partida;
-    }
-
-    public char getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(char player) {
-        this.player = player;
-    }
-
-    public char[][] getTabuleiro() {
-        return tabuleiro;
-    }
-
-    public void setTabuleiro(char[][] tabuleiro) {
-        this.tabuleiro = tabuleiro;
+    private boolean isNoTabuleiro(char posicao, int i, int j) { // Se pos escolhida == pos do tabuleiro
+        if (this.tabuleiro[i][j] == posicao) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
