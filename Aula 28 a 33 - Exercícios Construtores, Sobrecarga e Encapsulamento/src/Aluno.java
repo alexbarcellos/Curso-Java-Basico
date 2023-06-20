@@ -6,11 +6,28 @@ public class Aluno {
     private String nome;
     private int matricula;
     private String curso;
+    private int qtdMaterias;
     private String[] materias;
     private double[] mediasMateria;
     private double[][] notasMateria;
 
+    // ***************** Construtores *******************
+
+    public Aluno() { // inicializa os arrays
+        materias = new String[getQtdMaterias()];
+        mediasMateria = new double[4]; 
+        notasMateria = new double[getQtdMaterias()][4];
+    }
+
     // ***************** Getters & Setters *******************
+
+    public void setQtdMaterias(int qtdMaterias) {
+        this.qtdMaterias = qtdMaterias;
+    }
+
+    public int getQtdMaterias() {
+        return qtdMaterias;
+    }
 
     public void setNome(String nome) {
         this.nome = nome;
