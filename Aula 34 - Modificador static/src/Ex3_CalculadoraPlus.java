@@ -7,20 +7,23 @@ public class Ex3_CalculadoraPlus {
         System.out.print("Entre com  um   número: ");
         int a = scan.nextInt();
 
-        //System.out.print("Entre com outro número: ");
-        //int b = scan.nextInt();
+        // System.out.print("Entre com outro número: ");
+        // int b = scan.nextInt();
 
         imprimir(Calculadora.fatorial(a));
 
-/*      imprimir(Calculadora.somar(a, b));
-        imprimir(Calculadora.subtrair(a, b));
-        imprimir(Calculadora.multiplicar(a, b));
-        imprimir(Calculadora.dividir(a, b));
-        imprimir(Calculadora.potencia(a, b));
-*/
+        /*
+         * imprimir(Calculadora.somar(a, b));
+         * imprimir(Calculadora.subtrair(a, b));
+         * imprimir(Calculadora.multiplicar(a, b));
+         * imprimir(Calculadora.dividir(a, b));
+         * imprimir(Calculadora.potencia(a, b));
+         */
+        scan.close();
     }
 
     public static void imprimir(int resultado) {
         System.out.println(resultado);
     }
+
 }
