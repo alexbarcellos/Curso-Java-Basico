@@ -7,11 +7,11 @@ public class Ex1_Agenda {
 
         System.out.print("Nome da Agenda: ");
         String nomeAgenda = scan.nextLine();
-        Agenda.setNomeAgenda(nomeAgenda);
+        Agenda.setNome(nomeAgenda);
 
         Contato[] contatos = new Contato[3];
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < contatos.length; i++) {
             Contato c = new Contato();
 
             System.out.print("\nNome: ");

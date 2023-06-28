@@ -1,16 +1,16 @@
 public class Agenda {
-    private static String nomeAgenda;
+    private static String nome;
     private static Contato[] contatos;
 
     public Agenda() {
     }
 
-    public static String getNomeAgenda() {
-        return nomeAgenda;
+    public static String getNome() {
+        return nome;
     }
 
-    public static void setNomeAgenda(String nomeAgenda) {
-        Agenda.nomeAgenda = nomeAgenda;
+    public static void setNome(String nomeAgenda) {
+        Agenda.nome = nomeAgenda;
     }
 
     public static Contato[] getContatos() {
@@ -22,15 +22,18 @@ public class Agenda {
     }
 
     public static void exibirAgenda() {
-        
-        System.out.println(Agenda.getNomeAgenda());
 
-        for (Contato c : contatos) {
-            System.out.println(c.getNome());
-            System.out.println(c.getTelefone());
-            System.out.println(c.getEmail());
-            System.out.println();
+        if (Agenda.getNome() != null) {
+            System.out.println(Agenda.getNome()); // exibe o nome da agenda
+
+            for (Contato contato : contatos) {
+                if (contato != null) {
+                    System.out.println(contato.exibirContato()); // exibe os 3 contatos
+                }
+
+            }
         }
+
     }
-    
+
 }

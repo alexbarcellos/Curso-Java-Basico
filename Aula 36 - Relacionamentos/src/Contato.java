@@ -11,7 +11,7 @@ public class Contato {
     }
 
      // Getters & Setters //
-     
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -31,4 +31,9 @@ public class Contato {
     public void setEmail(String email) {
         this.email = email;
     } 
+
+    public String exibirContato () {
+        return "Nome: " + this.nome + " - Telefone: " + this.telefone + " - Email: " + this.email + ";";
+    }
+
 }
