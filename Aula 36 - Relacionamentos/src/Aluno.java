@@ -1,16 +1,18 @@
+import java.util.Scanner;
 
 public class Aluno {
-    
+    Scanner scan = new Scanner(System.in);
+
     private String nome;
     private String matricula;
-    private int[] notas = new int[4];
+    private double[] notas;
 
     public Aluno() {
     }
 
-    public Aluno(String nome) {
-        this.nome = nome;
-    }
+    //public Aluno(String nome) {
+    //    this.nome = nome;
+    //}
 
     public String getNome() {
         return nome;
@@ -28,11 +30,28 @@ public class Aluno {
         this.matricula = matricula;
     }
 
-    public int[] getNotas() {
+    public double[] getNotas() {
         return notas;
     }
 
-    public void setNotas(int[] notas) {
+    public void setNotas(double[] notas) {
         this.notas = notas;
+    }
+
+    public void exibeNotas() {
+        System.out.println("nota do aluno 1" + getNotas()[0]); /// testando ...
+        for (double nota : this.notas) {
+            System.out.println("nota" + nota);
+        }
+    }
+
+    public String exibeInfo() {
+        String info = "\nAluno: " + getNome();
+        info += "\nMatricula: " + getMatricula();
+        info += "\nNotas Bimestrais:";
+        for (double nota : notas) {
+            info += nota + "\t";
+        }
+        return info;
     }
 }

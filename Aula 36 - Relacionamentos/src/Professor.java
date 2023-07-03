@@ -6,6 +6,10 @@ public class Professor {
     public Professor() {
     }
 
+    public Professor(String nome) {
+        this.nome = nome;
+    }
+
     public Professor(String nome, String departamento, String email) {
         this.nome = nome;
         this.departamento = departamento;
@@ -36,4 +40,10 @@ public class Professor {
         this.email = email;
     }
 
+    public String exibeInfo() {
+        String info = "\nProfessor: " + this.nome;
+        info += "\nDepartamento: " + this.departamento;
+        info += "\nEmail: " + this.email;
+        return info;
+    }
 }
