@@ -28,14 +28,13 @@ public class Ex2_CursoEscola {
         System.out.println("Cadastre os Alunos matriculados no Curso " + curso.getNome());
 
         Aluno[] alunos = new Aluno[5]; // máximo 5 alunos
-        for (int i = 0 ; i < 5 ; i++) { 
-
-            scan.nextLine();
+        double somaTurma = 0;
+        for (int i = 0 ; i < alunos.length ; i++) { 
             
             System.out.print("Nome do Aluno: ");
             String nomeAluno = scan.nextLine();
             if (nomeAluno.equals("")) {
-                i = 5;
+                i = alunos.length;
                 System.out.println("*** Cadastro encerrado ***");
                 break;
             }
@@ -43,29 +42,20 @@ public class Ex2_CursoEscola {
             String matAluno = scan.nextLine();
 
             System.out.println("Cadastre as 4 notas do Aluno " + nomeAluno);
-
-            double[] notasBim = new double[4];
-            for (int j = 0; j < 4; j++) {
-                System.out.print("Nota do " + (j+1) + "º Bimestre: ");
-                notasBim[j] = scan.nextDouble();
-            }
-
             Aluno aluno = new Aluno();
+            somaTurma += aluno.cadastraNotas(); // cadastra as notas e retorna a media do aluno            
             aluno.setNome(nomeAluno);
             aluno.setMatricula(matAluno);
-            aluno.setNotas(notasBim);
             alunos[i] = aluno; /////////////////////////////////// ufa !!!
         }
-
         curso.setAlunos(alunos);
 
         System.out.println(curso.exibeInfo());
         System.out.println(professor.exibeInfo());
-        for (int i = 0; i < 5; i++) {
-            System.out.println(alunos[i].getNome());
+        System.out.println("Media Geral da Turma: " + (somaTurma / alunos.length));
+        for (int i = 0; i < alunos.length; i++) {
             System.out.println(alunos[i].exibeInfo());
         }
-        
         scan.close();
     }
 }

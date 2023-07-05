@@ -6,10 +6,6 @@ public class Professor {
     public Professor() {
     }
 
-    public Professor(String nome) {
-        this.nome = nome;
-    }
-
     public Professor(String nome, String departamento, String email) {
         this.nome = nome;
         this.departamento = departamento;
