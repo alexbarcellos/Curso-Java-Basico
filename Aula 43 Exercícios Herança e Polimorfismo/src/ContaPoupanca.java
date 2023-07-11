@@ -1,3 +1,5 @@
+import java.util.Calendar;
+
 public class ContaPoupanca extends ContaCorrente {
     private int diaRendimento;
     private double taxa;
@@ -15,7 +17,7 @@ public class ContaPoupanca extends ContaCorrente {
     public void setDiaRendimento(int diaRendimento) {
         this.diaRendimento = diaRendimento;
     }
-    
+
     public double getTaxa() {
         return taxa;
     }
@@ -24,16 +26,21 @@ public class ContaPoupanca extends ContaCorrente {
         this.taxa = taxa;
     }
 
-    public double calcularNovoSaldo(double taxa) {
+    private boolean calcularNovoSaldo(double taxa) {
         this.taxa = taxa;
-        double saldoAtual = getSaldo();
-        setSaldo( saldoAtual + (saldoAtual * (taxa / 100)) );
-        return  getSaldo();
+        Calendar hoje = Calendar.getInstance();
+        if (diaRendimento == hoje.get(Calendar.DAY_OF_MONTH)) {
+            setSaldo(getSaldo() + (getSaldo() * (taxa / 100)));
+            return true;
+        }
+            return false;
     }
 
     @Override
     public String toString() {
-        return "ContaPoupança [nomeCliente=" + getNomeCliente() + ", numConta=" + getNumConta() + ", saldo corrigido a " + this.taxa + "% a/m: " + calcularNovoSaldo(2) + "]";
+        return "ContaPoupança [nomeCliente=" + getNomeCliente() +
+                ", numConta=" + getNumConta() + ", saldo " +
+                ((calcularNovoSaldo(getTaxa())) ? "corrigido a " + this.taxa + "% a/m: " + getSaldo() : "sem atualização: " + getSaldo() ) + "]";
     }
 
 }

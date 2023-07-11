@@ -55,12 +55,4 @@ public class ContaCorrente {
         return "ContaCorrente [nomeCliente=" + nomeCliente + ", numConta=" + numConta + ", saldo=" + saldo + "]";
     }
 
-    public double calcularNovoSaldo(double taxa) {
-        return saldo;
-    }
-
-    public int getDiaRendimento() {
-        return 0;
-    }
-
 }

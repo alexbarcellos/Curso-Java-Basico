@@ -10,20 +10,30 @@ public class Ex1_ContasBancarias {
         System.out.println(cc.toString());
 
         System.out.println("\n--------------- Conta Poupança -------------------");
-        ContaCorrente cp = new ContaPoupanca(31, 2.0);
+        ContaPoupanca cp = new ContaPoupanca(11, 2.0);
+        cp.setNomeCliente("Barcellos");
+        cp.setNumConta("99-999-9");
         System.out.println("Saldo inicial: " + cp.getSaldo());
         cp.depositar(4000);
         cp.depositar(6001);
         cp.sacar(1);
-        System.out.println("saldo atualizado até o dia " + cp.getDiaRendimento() + ": ");
+        System.out.println("saldo para o dia " + cp.getDiaRendimento() + ": ");
         System.out.println(cp.toString());
 
         System.out.println("\n--------------- Conta Especial -------------------");
-        ContaCorrente ce = new ContaEspecial(1000);
+        ContaEspecial ce = new ContaEspecial(1000);
+        ce.setNomeCliente("Souza");
+        ce.setNumConta("11111-1");
         System.out.println("Saldo inicial: " + ce.getSaldo());
         ce.depositar(500);
-        ce.sacar(100);
-        System.out.println("Saldo: " + ce.getSaldo());
+        if (ce.sacar(100000)) {
+            System.out.println("Saldo: " + ce.getSaldo());
+        } else {
+            System.out.println("Não foi possível sacar ");
+        }
+
         System.out.println(ce.toString());
+        System.out.println("Saldo: " + ce.getSaldo());
     }
+
 }
