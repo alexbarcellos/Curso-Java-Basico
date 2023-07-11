@@ -6,8 +6,8 @@ public class Ex1_ContasBancarias {
         System.out.println("Saldo inicial: " + cc.getSaldo());
         cc.depositar(45.45);
         cc.sacar(10.00);
-        cc.toString();
-        System.out.println(cc.toString());
+        
+        System.out.println("ContaCorrente " + cc.toString() + "Saldo: " + cc.getSaldo());
 
         System.out.println("\n--------------- Conta Poupança -------------------");
         ContaPoupanca cp = new ContaPoupanca(11, 2.0);
@@ -33,7 +33,7 @@ public class Ex1_ContasBancarias {
         }
 
         System.out.println(ce.toString());
-        System.out.println("Saldo: " + ce.getSaldo());
+        System.out.println("Saldo com limite: " + ce.getSaldo());
     }
 
 }

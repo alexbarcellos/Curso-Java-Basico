@@ -30,7 +30,7 @@ public class ContaPoupanca extends ContaCorrente {
         this.taxa = taxa;
         Calendar hoje = Calendar.getInstance();
         if (diaRendimento == hoje.get(Calendar.DAY_OF_MONTH)) {
-            setSaldo(getSaldo() + (getSaldo() * (taxa / 100)));
+            setSaldo(getSaldo() + ( getSaldo() * (taxa/100) ));
             return true;
         }
             return false;
@@ -38,9 +38,8 @@ public class ContaPoupanca extends ContaCorrente {
 
     @Override
     public String toString() {
-        return "ContaPoupança [nomeCliente=" + getNomeCliente() +
-                ", numConta=" + getNumConta() + ", saldo " +
-                ((calcularNovoSaldo(getTaxa())) ? "corrigido a " + this.taxa + "% a/m: " + getSaldo() : "sem atualização: " + getSaldo() ) + "]";
+        return "ContaPoupança " + super.toString() +
+            ((calcularNovoSaldo(getTaxa())) ? "Saldo corrigido a " + this.taxa + "% a/m: " + getSaldo() : "Saldo sem atualização: " + getSaldo() ) + "]";
     }
 
 }

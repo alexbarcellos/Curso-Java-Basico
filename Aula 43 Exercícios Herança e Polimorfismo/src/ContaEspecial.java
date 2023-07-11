@@ -30,6 +30,7 @@ public class ContaEspecial extends ContaCorrente {
     
     @Override
     public String toString() {
-        return "ContaEspecial [nomeCliente=" + getNomeCliente() + ", numConta=" + getNumConta() + ", saldo sem limite=" + ( getSaldo() - getLimite() )+ "]";
+        return "ContaEspecial " + super.toString() +
+        "Saldo sem limite=" + ( getSaldo() - getLimite() );
     }
 }

@@ -52,7 +52,7 @@ public class ContaCorrente {
 
     @Override
     public String toString() {
-        return "ContaCorrente [nomeCliente=" + nomeCliente + ", numConta=" + numConta + ", saldo=" + saldo + "]";
+        return " nomeCliente=" + nomeCliente + ", numConta=" + numConta + "\n";
     }
 
 }
