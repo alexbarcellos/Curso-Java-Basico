@@ -1,0 +1,25 @@
+public class Ex2_ImpostoDeRenda {
+    public static void main(String[] args) {
+        
+        PessoaJuridica pj = new PessoaJuridica("Barcellos ME", "31649678/0001-37", 5600);
+        PessoaFisica pf1 = new PessoaFisica("Alexsandro", "131649678-37", 1000.0);
+        PessoaFisica pf2 = new PessoaFisica("De", "131649678-38", 1500.0);
+        PessoaFisica pf3 = new PessoaFisica("Souza", "131649678-39", 3000.0);
+        PessoaFisica pf4 = new PessoaFisica("Barcellos", "131649678-42", 4000.0);
+        PessoaFisica pf5 = new PessoaFisica("ASB", "131649678-41", 2200.0);
+
+        Contribuinte[] contribuinte = new Contribuinte[6];
+            
+        contribuinte[0] = pj;
+        contribuinte[1] = pf1;
+        contribuinte[2] = pf2;
+        contribuinte[3] = pf3;
+        contribuinte[4] = pf4;
+        contribuinte[5] = pf5;
+
+        for (Contribuinte contr : contribuinte) {
+            System.out.println(contr.toString());
+        }
+
+    }
+}
