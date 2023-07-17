@@ -1,3 +1,4 @@
+package Ex2_ImpostoDeRenda;
 public abstract class Contribuinte {
     private String nome;
     private double rendaBruta;

@@ -1,3 +1,4 @@
+package Ex2_ImpostoDeRenda;
 public class PessoaFisica extends Contribuinte {
     private String cpf;
 

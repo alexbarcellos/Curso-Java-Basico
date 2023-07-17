@@ -1,3 +1,4 @@
+package Ex3_Zoologico;
 public class Animal {
     private String nome;
     private double comprimento;

@@ -1,3 +1,4 @@
+package Ex3_Zoologico;
 public class Peixe extends Animal{
     private String caracteristicas;
 

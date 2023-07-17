@@ -1,3 +1,4 @@
+package Ex3_Zoologico;
 public class Mamifero extends Animal {
     private String alimento;
     

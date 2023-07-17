@@ -1,4 +1,5 @@
-public class Ex1_ContasBancarias {
+package Ex1_ContasBancarias;
+public class Test_ContasBancarias {
     public static void main(String[] args) {
         System.out.println("\n---------------CONTA CORRENTE---------------");
         ContaCorrente cc = new ContaCorrente("Alex", "21398", 55.55);

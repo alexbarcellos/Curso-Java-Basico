@@ -1,4 +1,5 @@
-public class Ex2_ImpostoDeRenda {
+package Ex2_ImpostoDeRenda;
+public class Test_ImpostoDeRenda {
     public static void main(String[] args) {
         
         PessoaJuridica pj = new PessoaJuridica("Barcellos ME", "31649933/0001-37", 5600);

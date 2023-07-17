@@ -1,3 +1,4 @@
+package Ex1_ContasBancarias;
 public class ContaCorrente {
     private String nomeCliente;
     private String numConta;

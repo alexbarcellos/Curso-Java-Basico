@@ -1,3 +1,4 @@
+package Ex2_ImpostoDeRenda;
 public class PessoaJuridica extends Contribuinte { 
     private String cnpj;
 

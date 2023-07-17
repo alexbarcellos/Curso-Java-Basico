@@ -1,4 +1,5 @@
-public class Ex3_Zoologico {
+package Ex3_Zoologico;
+public class Test_Zoologico {
     public static void main(String[] args) {
         System.out.println("***** ZOOLOGICO *****");
 
