@@ -14,5 +14,9 @@ public class Triangulo extends Figura2D {
     public void setBase(double base) {
         this.base = base;
     }
+    @Override
+    public double calcularArea() {
+        return (base * altura) / 2;
+    }
     
 }
