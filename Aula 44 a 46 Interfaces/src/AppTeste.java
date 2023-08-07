@@ -49,10 +49,7 @@ public class AppTeste {
             if (figura instanceof Figura3D){
                 Figura3D f3d = (Figura3D) figura;
                 System.out.println(f3d.calcularArea() + " - " + f3d.calcularVolume());
-            }
-            
+            }   
         }
-
     }
-
 } 
