@@ -1,56 +1,96 @@
 import java.util.Scanner;
 
+/**
+ *
+ * @author loiane
+ */
 public class AppAgendaContatos {
+
     public static void main(String[] args) {
+
         Scanner scan = new Scanner(System.in);
-        int contador = 0;
         Agenda agenda = new Agenda();
-        String nome = " ";
-        String telefone;
 
-        System.out.println("AGENDA DE CONTATOS\n");
+        int opcao = 1;
 
-        // CADASTRAR 3 CONTATOS        
-        System.out.println("Entre com os dados do contato:");
-        Contato[] contatos = new Contato[3];
+        while (opcao != 3){
+            opcao = obterOpcaoMenu(scan);
 
-        try {
-            for (int i = 0; i <= contatos.length; i++) { //forçando estouro do array. não deveria ser '<=' só '='
-                Contato c = new Contato();
-                System.out.print("Nome: ");
-                nome = scan.nextLine();
-    
-                if (nome.equals("")) {
-                    System.exit(0);
-                }
-    
-                System.out.print("Telefone: ");
-                telefone = scan.nextLine();
-    
-                contador++;
-                c.adicionarContato(nome, telefone, contador);
-                contatos[i] = c;
+            if (opcao == 1){ //Consultar contato
+                consultarContato(scan, agenda);
+            } else if (opcao == 2){ //Adicionar contato
+                adicionarContato(scan, agenda);
             }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("estourou o array... \nignorando o ultimo cadastro\nErro: " + e);
         }
+    }
 
-        agenda.setContatos(contatos);
-
-        // MOSTRAR TODOS CONTATOS
-        System.out.println(agenda.toString());
-
-        // CONSULTAR CONTATOS
-        System.out.print("\nQual contato deseja exibir: ");
-        Contato contatoNome = agenda.consultarNome(scan.next());
-        
+    public static void adicionarContato(Scanner scan, Agenda agenda){
         try {
-            System.out.println(contatoNome.toString());
-        } catch (Exception e) {
-            System.out.println("Contato não existe");
-            System.out.print("Erro encontrado: " + e);
+            System.out.println("Criando um contato, entre com as informações");
+            String nome = leInformacaoString(scan, "Entre com o nome do contato");
+            String telefone = leInformacaoString(scan, "Entre com o telefone do contato");
+            String email = leInformacaoString(scan, "Entre com o email do contato");
+
+            Contato contato = new Contato();
+            contato.setNome(nome);
+            contato.setEmail(email);
+            contato.setTelefone(telefone);
+
+            System.out.println("Contato a ser criado: ");
+            System.out.println(contato);
+
+            agenda.adicionarContato(contato);
+        } catch (AgendaCheiaException e) {
+            System.out.println(e.getMessage());
+
+            System.out.println("Contatos da agenda");
+            System.out.println(agenda);
+        }
+    }
+
+    public static void consultarContato(Scanner scan, Agenda agenda){
+        String nomeContato = leInformacaoString(scan, "Entre com o nome do contato a ser pesquisado: ");
+            try {
+                if (agenda.consultaContatoPorNome(nomeContato) >= 0){
+                    System.out.println("Contato existe");
+                }
+            } catch (ContatoNaoExisteException e) {
+                System.out.println(e.getMessage());
+            }
+    }
+
+    public static String leInformacaoString(Scanner scan, String msg){
+        System.out.println(msg);
+        String entrada = scan.nextLine();
+        return entrada;
+    }
+
+    public static int obterOpcaoMenu(Scanner scan){
+
+        boolean entradaValida = false;
+        int opcao = 3;
+
+        while (!entradaValida){
+            System.out.println("Digite a opção desejada:");
+            System.out.println("1: Consultar contato");
+            System.out.println("2: Adicionar contato");
+            System.out.println("3: Sair");
+
+            try {
+                String entrada = scan.nextLine();
+                opcao = Integer.parseInt(entrada);
+
+                if (opcao == 1 || opcao == 2 || opcao == 3){
+                    entradaValida = true;
+                } else {
+                    throw new Exception("Entrada inválida");
+                }
+            } 
+            catch (Exception e){
+                System.out.println("Entrada inválida, digite novamente\n");
+            }
         }
 
-        scan.close();
+        return opcao;
     }
 }
