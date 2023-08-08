@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class AppAgendaContatos {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         int contador = 0;
         Agenda agenda = new Agenda();
@@ -48,7 +48,7 @@ public class AppAgendaContatos {
             System.out.println(contatoNome.toString());
         } catch (Exception e) {
             System.out.println("Contato não existe");
-            System.out.println("Erro encontrado: " + e);
+            System.out.print("Erro encontrado: " + e);
         }
 
         scan.close();

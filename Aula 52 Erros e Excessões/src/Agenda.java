@@ -1,7 +1,7 @@
 public class Agenda {
     private Contato[] contatos;
     
-    public void setContatos(Contato[] contatos) {
+    public void setContatos(Contato[] contatos) throws NullPointerException {
         this.contatos = contatos;
     }
 
