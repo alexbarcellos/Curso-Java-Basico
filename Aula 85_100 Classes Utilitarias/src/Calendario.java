@@ -34,7 +34,7 @@ public class Calendario {
         System.out.println(sdf.format(data.getTime()));
 
         SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
-        String dataTexto = "12/12-1979";
+        String dataTexto = "12/12/1979";
 
         try {
             Date aniv = sdf1.parse(dataTexto);
